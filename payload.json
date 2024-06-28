@@ -1,0 +1,10 @@
+{
+    "hosts":"${hostname}",
+    "action": "496aca80e4d8f29fb8e8cd816c3afb48d3f103970b3a2ee1600c08ca67326dee"
+}
+,\r\n\"action\":\"496aca80e4d8f29fb8e8cd816c3afb48d3f103970b3a2ee1600c08ca67326dee\" #block
+,\r\n\"action\":\"a65cd796f61935a4ea4e661a4631324539c0c98d751c26339a58e0b6ce1d6dda\" #unblock
+,\r\n\"action\":\"c2d66755e6d0b42f7a54187c020f4c80f779620a057c070c779007da6b851f5d\" #quarantine
+,\r\n\"action\":\"b13ae8c7ba343e31a98321ebd90dc80f3ba2628427d4ea280086394fa771703d\" #unquarantine
+,\r\n\"action\":\"ff859b75f558cc48f73aaea80ef6feda4b26bcc37580218d929d9786fcfc750a\" #wazuh restart
+,\r\n\"action\":\"a676ab266823c5627a9b5856d8bef73f4aa73681dde875cdaed177c2adfaca61\" #host restart

@@ -1,0 +1,45 @@
+<table>
+    <thead>
+        <tr>
+            <th>Component</th>
+            <th>Port</th>
+            <th>Protocol</th>
+            <th>Purpose</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td rowspan="4">Wazuh Server</td>
+            <td>1514</td>
+            <td>TCP (default)</td>
+            <td>Agent connection service</td>
+        </tr>
+        <tr>
+            <td>1515</td>
+            <td>TCP</td>
+            <td>Agent enrollment service</td>
+        </tr>
+        <tr>
+            <td>1516</td>
+            <td>TCP</td>
+            <td>Wazuh cluster daemon</td>
+        </tr>
+        <tr>
+            <td>55000</td>
+            <td>TCP</td>
+            <td>Wazuh server RESTful API</td>
+        </tr>
+        <tr>
+            <td>Wazuh indexer</td>
+            <td>9200</td>
+            <td>TCP</td>
+            <td>Wazuh indexer RESTful API<td>
+        </tr>
+        <tr>
+            <td>Wazuh dashboard</td>
+            <td>8443</td>
+            <td>TCP</td>
+            <td>Wazuh web user interface<td>
+        </tr>
+    </tbody>
+</table>

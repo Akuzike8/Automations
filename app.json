@@ -1,0 +1,48 @@
+{
+    "alias": "",
+    "columns": [],
+    "computed_columns": [],
+    "csv_options": {
+    "columns": "",
+    "comment": "",
+    "delimiter": "",
+    "relax_column_count": false,
+    "skip_empty_lines": false,
+    "skip_lines_with_error": false
+    },
+    "data": "",
+    "dataOverrides": null,
+    "expression": "",
+    "filterExpression": "",
+    "filters": [],
+    "format": "table",
+    "global_query_id": "",
+    "groq": "",
+    "json_options": {
+    "columnar": false,
+    "root_is_not_array": false
+    },
+    "parser": "backend",
+    "query_mode": "",
+    "refId": "A",
+    "root_selector": "",
+    "seriesCount": 0,
+    "source": "url",
+    "sqlite_query": "",
+    "summarizeBy": "",
+    "summarizeExpression": "",
+    "type": "json",
+    "uql": "",
+    "url": "http://127.0.0.1:8882/",
+    "url_options": {
+    "body_content_type": "application/json",
+    "body_form": null,
+    "body_graphql_query": "",
+    "body_graphql_variables": "",
+    "body_type": "raw",
+    "data": "{\r\n  \"hosts\":\"${hostname}\"\r\n}",
+    "headers": [],
+    "method": "POST",
+    "params": null
+    }
+}

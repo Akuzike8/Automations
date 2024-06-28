@@ -1,0 +1,1409 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": {
+          "type": "grafana",
+          "uid": "-- Grafana --"
+        },
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "fiscalYearStartMonth": 0,
+  "graphTooltip": 0,
+  "id": 2,
+  "links": [],
+  "liveNow": false,
+  "panels": [
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 10,
+      "panels": [],
+      "title": "ALERTS",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 1
+      },
+      "id": 1,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "value",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "id": "3",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "timeZone": "utc",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "rule.level: [10 TO 20] AND agent.labels.company:Nico",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "HIGH ALERTS",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+      },
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "color-background"
+            },
+            "filterable": false,
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "red",
+                "value": null
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "ALERTS"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "basic",
+                  "type": "gauge",
+                  "valueDisplayMode": "color"
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "agent.name"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "AGENT"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "AGENT"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 164
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 4,
+        "y": 1
+      },
+      "id": 4,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "ALERTS"
+          }
+        ]
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "agent.name",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "agent.labels.company:Nico",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "ALERTS BY AGENT",
+      "transformations": [],
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+      },
+      "gridPos": {
+        "h": 10,
+        "w": 13,
+        "x": 11,
+        "y": 1
+      },
+      "id": 7,
+      "options": {
+        "dedupStrategy": "exact",
+        "enableLogDetails": true,
+        "prettifyLogMessage": true,
+        "showCommonLabels": false,
+        "showLabels": false,
+        "showTime": true,
+        "sortOrder": "Descending",
+        "wrapLogMessage": false
+      },
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "settings": {
+                "limit": "500"
+              },
+              "type": "logs"
+            }
+          ],
+          "query": "agent.labels.company:Nico",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "ALERT DETAILS",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "_id": true,
+              "_index": true,
+              "_source": true,
+              "_type": true,
+              "data.id": true,
+              "data.security_id": true,
+              "data.subject.logon_id": true,
+              "data.subject.security_id": true,
+              "decoder.name": true,
+              "decoder.parent": true,
+              "full_log": true,
+              "highlight": true,
+              "id": true,
+              "input.type": true,
+              "manager.name": true,
+              "predecoder.program_name": true,
+              "predecoder.timestamp": true,
+              "previous_log": true,
+              "previous_output": true,
+              "rule.gdpr": true,
+              "rule.gpg13": true,
+              "rule.hipaa": true,
+              "rule.mail": true,
+              "rule.pci_dss": true,
+              "rule.tsc": true,
+              "sort": true,
+              "syscheck.arch": true,
+              "syscheck.attrs_after": true,
+              "syscheck.changed_attributes": true,
+              "syscheck.event": true,
+              "syscheck.gid_after": true,
+              "syscheck.gid_before": true,
+              "syscheck.gname_after": true,
+              "syscheck.md5_after": true,
+              "syscheck.md5_before": true,
+              "syscheck.mode": true,
+              "syscheck.mtime_after": true,
+              "syscheck.mtime_before": true,
+              "syscheck.path": true,
+              "syscheck.sha1_after": true,
+              "syscheck.sha1_before": true,
+              "syscheck.sha256_after": true,
+              "syscheck.sha256_before": true,
+              "syscheck.size_after": true,
+              "syscheck.size_before": true,
+              "syscheck.uid_after": true,
+              "syscheck.uname_after": true,
+              "syscheck.value_name": true,
+              "syscheck.value_type": true,
+              "syscheck.win_perm_after": true,
+              "timestamp": false
+            },
+            "includeByName": {},
+            "indexByName": {
+              "@timestamp": 1,
+              "_id": 4,
+              "_index": 5,
+              "_source": 6,
+              "_type": 7,
+              "agent.id": 8,
+              "agent.ip": 9,
+              "agent.name": 10,
+              "data.account_domain": 11,
+              "data.account_name": 12,
+              "data.dstuser": 13,
+              "data.extra_data": 14,
+              "data.id": 15,
+              "data.logon_type": 16,
+              "data.security_id": 17,
+              "data.srcip": 18,
+              "data.status": 19,
+              "data.subject.account_domain": 20,
+              "data.subject.account_name": 21,
+              "data.subject.logon_id": 22,
+              "data.subject.security_id": 23,
+              "data.system_name": 24,
+              "data.title": 25,
+              "data.type": 26,
+              "decoder.name": 27,
+              "decoder.parent": 28,
+              "full_log": 29,
+              "highlight": 30,
+              "id": 31,
+              "input.type": 32,
+              "location": 33,
+              "manager.name": 34,
+              "predecoder.program_name": 35,
+              "predecoder.timestamp": 36,
+              "previous_log": 37,
+              "previous_output": 38,
+              "rule.description": 0,
+              "rule.firedtimes": 39,
+              "rule.gdpr": 40,
+              "rule.gpg13": 41,
+              "rule.groups": 42,
+              "rule.hipaa": 43,
+              "rule.id": 44,
+              "rule.info": 45,
+              "rule.level": 2,
+              "rule.mail": 46,
+              "rule.mitre.id": 47,
+              "rule.mitre.tactic": 48,
+              "rule.mitre.technique": 49,
+              "rule.nist_800_53": 50,
+              "rule.pci_dss": 51,
+              "rule.tsc": 52,
+              "sort": 53,
+              "syscheck.arch": 54,
+              "syscheck.attrs_after": 55,
+              "syscheck.changed_attributes": 56,
+              "syscheck.event": 57,
+              "syscheck.gid_after": 58,
+              "syscheck.gid_before": 59,
+              "syscheck.gname_after": 60,
+              "syscheck.md5_after": 61,
+              "syscheck.md5_before": 62,
+              "syscheck.mode": 63,
+              "syscheck.mtime_after": 64,
+              "syscheck.mtime_before": 65,
+              "syscheck.path": 66,
+              "syscheck.sha1_after": 67,
+              "syscheck.sha1_before": 68,
+              "syscheck.sha256_after": 69,
+              "syscheck.sha256_before": 70,
+              "syscheck.size_after": 71,
+              "syscheck.size_before": 72,
+              "syscheck.uid_after": 73,
+              "syscheck.uname_after": 74,
+              "syscheck.value_name": 75,
+              "syscheck.value_type": 76,
+              "syscheck.win_perm_after": 77,
+              "timestamp": 3
+            },
+            "renameByName": {}
+          }
+        }
+      ],
+      "type": "logs"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "blue",
+                "value": null
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 0,
+        "y": 6
+      },
+      "id": 2,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "id": "2",
+              "settings": {
+                "interval": "auto",
+                "min_doc_count": "0",
+                "timeZone": "utc",
+                "trimEdges": "0"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "agent.labels.company:Nico",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "EVENTS (TOTAL)",
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Count"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "EVENTS"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "basic",
+                  "type": "gauge",
+                  "valueDisplayMode": "color"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "blue",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "rule.groups"
+            },
+            "properties": [
+              {
+                "id": "displayName",
+                "value": "CATEGORY"
+              },
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "blue",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 7,
+        "x": 4,
+        "y": 6
+      },
+      "id": 5,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true,
+        "sortBy": [
+          {
+            "desc": true,
+            "displayName": "EVENTS"
+          }
+        ]
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "rule.groups",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "agent.labels.company:Nico",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "ALERTS BY CATEGORY",
+      "type": "table"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "c978c6d8-06c2-4e92-97c4-4235ddeaeafe"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Disconnected"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "red",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Total"
+            },
+            "properties": [
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "blue",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 5,
+        "x": 0,
+        "y": 11
+      },
+      "id": 3,
+      "options": {
+        "colorMode": "value",
+        "graphMode": "area",
+        "justifyMode": "auto",
+        "orientation": "auto",
+        "reduceOptions": {
+          "calcs": [
+            "sum"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showPercentChange": false,
+        "textMode": "auto",
+        "wideLayout": true
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "c978c6d8-06c2-4e92-97c4-4235ddeaeafe"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "url": "https://172.31.30.70:55000/agents/summary/status",
+          "url_options": {
+            "data": "",
+            "method": "GET"
+          }
+        }
+      ],
+      "title": "AGENTS",
+      "transformations": [
+        {
+          "id": "extractFields",
+          "options": {
+            "replace": true,
+            "source": "data"
+          }
+        },
+        {
+          "id": "extractFields",
+          "options": {
+            "keepTime": false,
+            "replace": false,
+            "source": "configuration"
+          }
+        },
+        {
+          "id": "extractFields",
+          "options": {
+            "replace": true,
+            "source": "connection"
+          }
+        },
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {
+              "never_connected": true,
+              "pending": true
+            },
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "active": "Active",
+              "disconnected": "Disconnected",
+              "total": "Total"
+            }
+          }
+        }
+      ],
+      "type": "stat"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "drawStyle": "line",
+            "fillOpacity": 12,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "smooth",
+            "lineStyle": {
+              "fill": "solid"
+            },
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "displayName": "Activity",
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 13,
+        "x": 5,
+        "y": 11
+      },
+      "id": 8,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "right",
+          "showLegend": true
+        },
+        "tooltip": {
+          "mode": "multi",
+          "sort": "none"
+        }
+      },
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "timestamp",
+              "id": "2",
+              "settings": {
+                "interval": "auto"
+              },
+              "type": "date_histogram"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "agent.labels.company:Nico",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "ALERT ACTIVITY",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "custom": {
+            "align": "auto",
+            "cellOptions": {
+              "type": "auto"
+            },
+            "inspect": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unitScale": true
+        },
+        "overrides": [
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "ALERTS"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "mode": "basic",
+                  "type": "gauge"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "purple",
+                      "value": null
+                    }
+                  ]
+                }
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "LEVEL"
+            },
+            "properties": [
+              {
+                "id": "custom.cellOptions",
+                "value": {
+                  "type": "color-text"
+                }
+              },
+              {
+                "id": "thresholds",
+                "value": {
+                  "mode": "absolute",
+                  "steps": [
+                    {
+                      "color": "green",
+                      "value": null
+                    },
+                    {
+                      "color": "#6ED0E0",
+                      "value": 5
+                    },
+                    {
+                      "color": "#EAB839",
+                      "value": 10
+                    },
+                    {
+                      "color": "red",
+                      "value": 14
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        ]
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 6,
+        "x": 18,
+        "y": 11
+      },
+      "id": 9,
+      "options": {
+        "cellHeight": "sm",
+        "footer": {
+          "countRows": false,
+          "fields": "",
+          "reducer": [
+            "sum"
+          ],
+          "show": false
+        },
+        "showHeader": true
+      },
+      "pluginVersion": "10.3.3",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "rule.level",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "10"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "agent.labels.company:Nico",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "ALERTS BY SEVERITY",
+      "transformations": [
+        {
+          "id": "organize",
+          "options": {
+            "excludeByName": {},
+            "includeByName": {},
+            "indexByName": {},
+            "renameByName": {
+              "Count": "ALERTS",
+              "rule.level": "LEVEL"
+            }
+          }
+        }
+      ],
+      "type": "table"
+    },
+    {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 17
+      },
+      "id": 11,
+      "panels": [],
+      "title": "ACTIVE RESPONSE",
+      "type": "row"
+    },
+    {
+      "datasource": {
+        "type": "elasticsearch",
+        "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+      },
+      "description": "Set hostname for the active response module\n",
+      "gridPos": {
+        "h": 4,
+        "w": 11,
+        "x": 0,
+        "y": 18
+      },
+      "id": 13,
+      "options": {
+        "buttonGroup": {
+          "orientation": "center",
+          "size": "md"
+        },
+        "confirmModal": {
+          "body": "Please confirm to update changed values",
+          "cancel": "Cancel",
+          "columns": {
+            "include": [
+              "name",
+              "oldValue",
+              "newValue"
+            ],
+            "name": "Label",
+            "newValue": "New Value",
+            "oldValue": "Old Value"
+          },
+          "confirm": "Confirm",
+          "title": "Confirm update request"
+        },
+        "elementValueChanged": "",
+        "elements": [
+          {
+            "id": "hostname",
+            "labelWidth": 10,
+            "options": [],
+            "optionsSource": "Query",
+            "queryOptions": {
+              "source": "A",
+              "value": "agent.name"
+            },
+            "section": "",
+            "title": "hostname",
+            "tooltip": "",
+            "type": "multiselect",
+            "uid": "c00f12ab-38b1-4482-ae05-e27a3b48d7f8",
+            "unit": "",
+            "value": ""
+          }
+        ],
+        "initial": {
+          "code": "console.log(data, response, initial, elements);\n\nreturn;\n\n/**\n * Data Source\n * Requires form elements to be defined\n */\nconst dataQuery = toDataQueryResponse(response);\nconsole.log(dataQuery);",
+          "contentType": "application/json",
+          "getPayload": "return {\n  rawSql: '',\n  format: 'table',\n}",
+          "highlight": false,
+          "highlightColor": "red",
+          "method": "-"
+        },
+        "layout": {
+          "orientation": "horizontal",
+          "padding": 10,
+          "sections": [],
+          "variant": "single"
+        },
+        "reset": {
+          "backgroundColor": "purple",
+          "foregroundColor": "yellow",
+          "icon": "process",
+          "text": "Reset",
+          "variant": "hidden"
+        },
+        "resetAction": {
+          "code": "if (response && response.ok) {\n  notifySuccess(['Update', 'Values updated successfully.']);\n  locationService.reload();\n} else {\n  notifyError(['Update', 'An error occured updating values.']);\n}",
+          "confirm": false,
+          "getPayload": "return {\n  rawSql: '',\n  format: 'table',\n}",
+          "mode": "initial"
+        },
+        "saveDefault": {
+          "icon": "save",
+          "text": "Save Default",
+          "variant": "hidden"
+        },
+        "submit": {
+          "backgroundColor": "purple",
+          "foregroundColor": "yellow",
+          "icon": "save",
+          "text": "set",
+          "variant": "primary"
+        },
+        "sync": true,
+        "update": {
+          "code": "hosts = elements[0].value\r\nhosts = hosts.toString()\r\n\r\nfunction updateVariable(key, value) {\r\n  context.grafana.locationService.partial({\r\n    [`var-${key}`]: value\r\n  }, true)\r\n}\r\n\r\nupdateVariable(\"hostname\", hosts)\r\nconsole.log(`${hostname}`)",
+          "confirm": false,
+          "contentType": "application/json",
+          "getPayload": "const payload = {};\n\nelements.forEach((element) => {\n  if (!element.value) {\n    return;\n  }\n\n  payload[element.id] = element.value;\n})\n\nreturn payload;\n\n/**\n * Data Source payload\n */ \nreturn {\n  rawSql: '',\n  format: 'table',\n};",
+          "method": "-",
+          "payloadMode": "all"
+        },
+        "updateEnabled": "auto"
+      },
+      "pluginVersion": "3.8.0",
+      "targets": [
+        {
+          "alias": "",
+          "bucketAggs": [
+            {
+              "field": "agent.name",
+              "id": "2",
+              "settings": {
+                "min_doc_count": "1",
+                "order": "desc",
+                "orderBy": "_term",
+                "size": "0"
+              },
+              "type": "terms"
+            }
+          ],
+          "datasource": {
+            "type": "elasticsearch",
+            "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+          },
+          "metrics": [
+            {
+              "id": "1",
+              "type": "count"
+            }
+          ],
+          "query": "agent.labels.company:Nico",
+          "refId": "A",
+          "timeField": "timestamp"
+        }
+      ],
+      "title": "Hostname",
+      "type": "volkovlabs-form-panel"
+    },
+    {
+      "datasource": {
+        "type": "yesoreyeram-infinity-datasource",
+        "uid": "c484b6a4-2931-4c0c-a113-8fc7ec587f07"
+      },
+      "description": "Active response actions - ${hostname}",
+      "gridPos": {
+        "h": 4,
+        "w": 13,
+        "x": 11,
+        "y": 18
+      },
+      "id": 12,
+      "options": {
+        "buttons": [
+          {
+            "datasource": "infinity",
+            "query": "{\n    \"alias\": \"\",\n    \"columns\": [],\n    \"computed_columns\": [],\n    \"csv_options\": {\n    \"columns\": \"\",\n    \"comment\": \"\",\n    \"delimiter\": \"\",\n    \"relax_column_count\": false,\n    \"skip_empty_lines\": false,\n    \"skip_lines_with_error\": false\n    },\n    \"data\": \"\",\n    \"dataOverrides\": null,\n    \"expression\": \"\",\n    \"filterExpression\": \"\",\n    \"filters\": [],\n    \"format\": \"table\",\n    \"global_query_id\": \"\",\n    \"groq\": \"\",\n    \"json_options\": {\n    \"columnar\": false,\n    \"root_is_not_array\": false\n    },\n    \"parser\": \"backend\",\n    \"query_mode\": \"\",\n    \"refId\": \"A\",\n    \"root_selector\": \"\",\n    \"seriesCount\": 0,\n    \"source\": \"url\",\n    \"sqlite_query\": \"\",\n    \"summarizeBy\": \"\",\n    \"summarizeExpression\": \"\",\n    \"type\": \"json\",\n    \"uql\": \"\",\n    \"url\": \"http://127.0.0.1:8882/\",\n    \"url_options\": {\n    \"body_content_type\": \"application/json\",\n    \"body_form\": null,\n    \"body_graphql_query\": \"\",\n    \"body_graphql_variables\": \"\",\n    \"body_type\": \"raw\",\n    \"data\": \"{\\r\\n  \\\"hosts\\\":\\\"${hostname}\\\",\\r\\n\\\"action\\\":\\\"c2d66755e6d0b42f7a54187c020f4c80f779620a057c070c779007da6b851f5d\\\"\\r\\n}\",\n    \"headers\": [],\n    \"method\": \"POST\",\n    \"params\": null\n    }\n}",
+            "text": "quarantine",
+            "variant": "primary"
+          },
+          {
+            "datasource": "infinity",
+            "query": "{\n    \"alias\": \"\",\n    \"columns\": [],\n    \"computed_columns\": [],\n    \"csv_options\": {\n    \"columns\": \"\",\n    \"comment\": \"\",\n    \"delimiter\": \"\",\n    \"relax_column_count\": false,\n    \"skip_empty_lines\": false,\n    \"skip_lines_with_error\": false\n    },\n    \"data\": \"\",\n    \"dataOverrides\": null,\n    \"expression\": \"\",\n    \"filterExpression\": \"\",\n    \"filters\": [],\n    \"format\": \"table\",\n    \"global_query_id\": \"\",\n    \"groq\": \"\",\n    \"json_options\": {\n    \"columnar\": false,\n    \"root_is_not_array\": false\n    },\n    \"parser\": \"backend\",\n    \"query_mode\": \"\",\n    \"refId\": \"A\",\n    \"root_selector\": \"\",\n    \"seriesCount\": 0,\n    \"source\": \"url\",\n    \"sqlite_query\": \"\",\n    \"summarizeBy\": \"\",\n    \"summarizeExpression\": \"\",\n    \"type\": \"json\",\n    \"uql\": \"\",\n    \"url\": \"http://127.0.0.1:8882/\",\n    \"url_options\": {\n    \"body_content_type\": \"application/json\",\n    \"body_form\": null,\n    \"body_graphql_query\": \"\",\n    \"body_graphql_variables\": \"\",\n    \"body_type\": \"raw\",\n    \"data\": \"{\\r\\n  \\\"hosts\\\":\\\"${hostname}\\\",\\r\\n\\\"action\\\":\\\"b13ae8c7ba343e31a98321ebd90dc80f3ba2628427d4ea280086394fa771703d\\\"\\r\\n}\",\n    \"headers\": [],\n    \"method\": \"POST\",\n    \"params\": null\n    }\n}",
+            "text": "unquarantine"
+          },
+          {
+            "datasource": "infinity",
+            "query": "{\n    \"alias\": \"\",\n    \"columns\": [],\n    \"computed_columns\": [],\n    \"csv_options\": {\n    \"columns\": \"\",\n    \"comment\": \"\",\n    \"delimiter\": \"\",\n    \"relax_column_count\": false,\n    \"skip_empty_lines\": false,\n    \"skip_lines_with_error\": false\n    },\n    \"data\": \"\",\n    \"dataOverrides\": null,\n    \"expression\": \"\",\n    \"filterExpression\": \"\",\n    \"filters\": [],\n    \"format\": \"table\",\n    \"global_query_id\": \"\",\n    \"groq\": \"\",\n    \"json_options\": {\n    \"columnar\": false,\n    \"root_is_not_array\": false\n    },\n    \"parser\": \"backend\",\n    \"query_mode\": \"\",\n    \"refId\": \"A\",\n    \"root_selector\": \"\",\n    \"seriesCount\": 0,\n    \"source\": \"url\",\n    \"sqlite_query\": \"\",\n    \"summarizeBy\": \"\",\n    \"summarizeExpression\": \"\",\n    \"type\": \"json\",\n    \"uql\": \"\",\n    \"url\": \"http://127.0.0.1:8882/\",\n    \"url_options\": {\n    \"body_content_type\": \"application/json\",\n    \"body_form\": null,\n    \"body_graphql_query\": \"\",\n    \"body_graphql_variables\": \"\",\n    \"body_type\": \"raw\",\n    \"data\": \"{\\r\\n  \\\"hosts\\\":\\\"${hostname}\\\",\\r\\n\\\"action\\\":\\\"ff859b75f558cc48f73aaea80ef6feda4b26bcc37580218d929d9786fcfc750a\\\"\\r\\n}\",\n    \"headers\": [],\n    \"method\": \"POST\",\n    \"params\": null\n    }\n}",
+            "text": "wazuh restart"
+          },
+          {
+            "datasource": "infinity",
+            "query": "{\n    \"alias\": \"\",\n    \"columns\": [],\n    \"computed_columns\": [],\n    \"csv_options\": {\n    \"columns\": \"\",\n    \"comment\": \"\",\n    \"delimiter\": \"\",\n    \"relax_column_count\": false,\n    \"skip_empty_lines\": false,\n    \"skip_lines_with_error\": false\n    },\n    \"data\": \"\",\n    \"dataOverrides\": null,\n    \"expression\": \"\",\n    \"filterExpression\": \"\",\n    \"filters\": [],\n    \"format\": \"table\",\n    \"global_query_id\": \"\",\n    \"groq\": \"\",\n    \"json_options\": {\n    \"columnar\": false,\n    \"root_is_not_array\": false\n    },\n    \"parser\": \"backend\",\n    \"query_mode\": \"\",\n    \"refId\": \"A\",\n    \"root_selector\": \"\",\n    \"seriesCount\": 0,\n    \"source\": \"url\",\n    \"sqlite_query\": \"\",\n    \"summarizeBy\": \"\",\n    \"summarizeExpression\": \"\",\n    \"type\": \"json\",\n    \"uql\": \"\",\n    \"url\": \"http://127.0.0.1:8882/\",\n    \"url_options\": {\n    \"body_content_type\": \"application/json\",\n    \"body_form\": null,\n    \"body_graphql_query\": \"\",\n    \"body_graphql_variables\": \"\",\n    \"body_type\": \"raw\",\n    \"data\": \"{\\r\\n  \\\"hosts\\\":\\\"${hostname}\\\",\\r\\n\\\"action\\\":\\\"496aca80e4d8f29fb8e8cd816c3afb48d3f103970b3a2ee1600c08ca67326dee\\\"\\r\\n}\",\n    \"headers\": [],\n    \"method\": \"POST\",\n    \"params\": null\n    }\n}",
+            "text": "block"
+          },
+          {
+            "datasource": "infinity",
+            "query": "{\n    \"alias\": \"\",\n    \"columns\": [],\n    \"computed_columns\": [],\n    \"csv_options\": {\n    \"columns\": \"\",\n    \"comment\": \"\",\n    \"delimiter\": \"\",\n    \"relax_column_count\": false,\n    \"skip_empty_lines\": false,\n    \"skip_lines_with_error\": false\n    },\n    \"data\": \"\",\n    \"dataOverrides\": null,\n    \"expression\": \"\",\n    \"filterExpression\": \"\",\n    \"filters\": [],\n    \"format\": \"table\",\n    \"global_query_id\": \"\",\n    \"groq\": \"\",\n    \"json_options\": {\n    \"columnar\": false,\n    \"root_is_not_array\": false\n    },\n    \"parser\": \"backend\",\n    \"query_mode\": \"\",\n    \"refId\": \"A\",\n    \"root_selector\": \"\",\n    \"seriesCount\": 0,\n    \"source\": \"url\",\n    \"sqlite_query\": \"\",\n    \"summarizeBy\": \"\",\n    \"summarizeExpression\": \"\",\n    \"type\": \"json\",\n    \"uql\": \"\",\n    \"url\": \"http://127.0.0.1:8882/\",\n    \"url_options\": {\n    \"body_content_type\": \"application/json\",\n    \"body_form\": null,\n    \"body_graphql_query\": \"\",\n    \"body_graphql_variables\": \"\",\n    \"body_type\": \"raw\",\n    \"data\": \"{\\r\\n  \\\"hosts\\\":\\\"${hostname}\\\",\\r\\n\\\"action\\\":\\\"a65cd796f61935a4ea4e661a4631324539c0c98d751c26339a58e0b6ce1d6dda\\\"\\r\\n}\",\n    \"headers\": [],\n    \"method\": \"POST\",\n    \"params\": null\n    }\n}",
+            "text": "unblock"
+          },
+          {
+            "datasource": "infinity",
+            "query": "{\n    \"alias\": \"\",\n    \"columns\": [],\n    \"computed_columns\": [],\n    \"csv_options\": {\n    \"columns\": \"\",\n    \"comment\": \"\",\n    \"delimiter\": \"\",\n    \"relax_column_count\": false,\n    \"skip_empty_lines\": false,\n    \"skip_lines_with_error\": false\n    },\n    \"data\": \"\",\n    \"dataOverrides\": null,\n    \"expression\": \"\",\n    \"filterExpression\": \"\",\n    \"filters\": [],\n    \"format\": \"table\",\n    \"global_query_id\": \"\",\n    \"groq\": \"\",\n    \"json_options\": {\n    \"columnar\": false,\n    \"root_is_not_array\": false\n    },\n    \"parser\": \"backend\",\n    \"query_mode\": \"\",\n    \"refId\": \"A\",\n    \"root_selector\": \"\",\n    \"seriesCount\": 0,\n    \"source\": \"url\",\n    \"sqlite_query\": \"\",\n    \"summarizeBy\": \"\",\n    \"summarizeExpression\": \"\",\n    \"type\": \"json\",\n    \"uql\": \"\",\n    \"url\": \"http://127.0.0.1:8882/\",\n    \"url_options\": {\n    \"body_content_type\": \"application/json\",\n    \"body_form\": null,\n    \"body_graphql_query\": \"\",\n    \"body_graphql_variables\": \"\",\n    \"body_type\": \"raw\",\n    \"data\": \"{\\r\\n  \\\"hosts\\\":\\\"${hostname}\\\",\\r\\n\\\"action\\\":\\\"a676ab266823c5627a9b5856d8bef73f4aa73681dde875cdaed177c2adfaca61\\\"\\r\\n}\",\n    \"headers\": [],\n    \"method\": \"POST\",\n    \"params\": null\n    }\n}",
+            "text": "host restart"
+          }
+        ],
+        "orientation": "horizontal"
+      },
+      "targets": [
+        {
+          "columns": [],
+          "datasource": {
+            "type": "yesoreyeram-infinity-datasource",
+            "uid": "c484b6a4-2931-4c0c-a113-8fc7ec587f07"
+          },
+          "filters": [],
+          "format": "table",
+          "global_query_id": "",
+          "parser": "backend",
+          "refId": "A",
+          "root_selector": "",
+          "source": "url",
+          "type": "json",
+          "url": "http://127.0.0.1:8882/",
+          "url_options": {
+            "data": "",
+            "method": "POST"
+          }
+        }
+      ],
+      "title": "Actions",
+      "type": "speakyourcode-button-panel"
+    }
+  ],
+  "refresh": "5s",
+  "schemaVersion": 39,
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "datasource": {
+          "type": "elasticsearch",
+          "uid": "c94fa82e-82be-4e37-a9f8-19983e7e2d0f"
+        },
+        "filters": [],
+        "hide": 0,
+        "name": "Filters",
+        "skipUrlSync": false,
+        "type": "adhoc"
+      },
+      {
+        "allValue": "",
+        "current": {
+          "selected": false,
+          "text": [
+            "All"
+          ],
+          "value": [
+            "$__all"
+          ]
+        },
+        "error": {},
+        "hide": 2,
+        "includeAll": false,
+        "multi": false,
+        "name": "hostname",
+        "options": [],
+        "query": "",
+        "skipUrlSync": false,
+        "type": "custom"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-24h",
+    "to": "now"
+  },
+  "timepicker": {},
+  "timezone": "",
+  "title": "EDR SUMMARY",
+  "uid": "d869766a-2a47-466c-a70f-c39e304d6d8d",
+  "version": 116,
+  "weekStart": ""
+}
